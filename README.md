@@ -22,4 +22,4 @@ It provides a solid foundation for developing C projects and is a valuable resou
 
 4. compile:
    
-  gcc your_program_name.c path_to/libft.a
+     gcc your_program_name.c path_to/libft.a
