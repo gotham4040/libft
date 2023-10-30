@@ -18,8 +18,10 @@ It provides a solid foundation for developing C projects and is a valuable resou
 
 4. to use the lib just add inside your script:
 
-     #include "libft.h"
+   ```bash
+   #include "libft.h"
 
 4. compile:
-   
-     gcc your_program_name.c path_to/libft.a
+
+   ```bash
+   gcc your_program_name.c path_to/libft.a
