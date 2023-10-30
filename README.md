@@ -18,7 +18,7 @@ It provides a solid foundation for developing C projects and is a valuable resou
 
 4. to use the lib just add inside your script:
 
-  #include "libft.h"
+     #include "libft.h"
 
 4. compile:
    
