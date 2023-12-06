@@ -9,7 +9,7 @@ It provides a solid foundation for developing C projects and is a valuable resou
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/GothamAgency/libft.git
+   git clone https://github.com/gotham4040/libft.git
 
 2. compile the lib:
    
