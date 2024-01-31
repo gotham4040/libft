@@ -12,64 +12,86 @@
 
 #include "libft.h"
 
-static int	count_words(const char *str, char c)
+static void	*ft_freetab(char **tabstr)
 {
 	int	i;
-	int	trigger;
 
 	i = 0;
-	trigger = 0;
-	while (*str)
+	while (tabstr[i])
 	{
-		if (*str != c && trigger == 0)
-		{
-			trigger = 1;
-			i++;
-		}
-		else if (*str == c)
-			trigger = 0;
-		str++;
+		free(tabstr[i]);
+		i++;
 	}
-	return (i);
+	free(tabstr);
+	return (NULL);
 }
 
-static char	*word_dup(const char *str, int start, int finish)
+static int	ft_count(const char *str, char c)
 {
-	char	*word;
-	int		i;
+	int	i;
+	int	count;
 
 	i = 0;
-	word = malloc((finish - start + 1) * sizeof(char));
-	while (start < finish)
-		word[i++] = str[start++];
-	word[i] = '\0';
-	return (word);
+	if (str == NULL)
+		return (0);
+	while (str[i] == (char) c && str[i] != 0)
+		i++;
+	if (str[i] == '\0')
+		return (0);
+	count = 1;
+	while (str[i])
+	{
+		if (str[i] == (char) c)
+		{
+			while (str[i] == (char) c)
+				i++;
+			if (str[i] != 0)
+				count++;
+			i--;
+		}
+		i++;
+	}
+	return (count);
+}
+
+static char	*ft_dosplit(const char *s, char c, int i)
+{
+	int		num;
+	char	*str;
+
+	num = 0;
+	while (s[i + num] != (char) c && s[i + num])
+		num++;
+	str = ft_substr(s, i, num);
+	if (!str)
+		return (NULL);
+	return (str);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	i;
-	size_t	j;
-	int		index;
-	char	**split;
+	int		count;
+	int		word;
+	int		i;
+	char	**tabstr;
 
-	split = malloc((count_words(s, c) + 1) * sizeof(char *));
-	if (!s || !(split))
-		return (0);
+	count = ft_count(s, c);
+	word = 0;
 	i = 0;
-	j = 0;
-	index = -1;
-	while (i <= ft_strlen(s))
+	tabstr = ft_calloc(count + 1, sizeof(char *));
+	if (!tabstr)
+		return (NULL);
+	while (word < count && s[i])
 	{
-		if (s[i] != c && index < 0)
-			index = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && index >= 0)
-		{
-			split[j++] = word_dup(s, index, i);
-			index = -1;
-		}
-		i++;
+		while (s[i] == (char) c && s[i])
+			i++;
+		tabstr[word] = ft_dosplit(s, c, i);
+		if (!tabstr[word])
+			return (ft_freetab(tabstr));
+		word++;
+		while (s[i] != (char) c && s[i])
+			i++;
 	}
-	split[j] = 0;
-	return (split);
+	tabstr[word] = NULL;
+	return (tabstr);
 }
