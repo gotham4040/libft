@@ -2,7 +2,9 @@
 
 The Libft project is a custom C library created as part of the 42 school curriculum.
 This library contains a collection of essential functions that are commonly used in C programming.
-It provides a solid foundation for developing C projects and is a valuable resource for 42 students and other C programmers.
+Beyond the required functions, I have not only completed the bonus part of the project,
+but also added some additional functions of my own.
+These extra functions have expanded the library's functionality and provide additional utility for C programming tasks.
 
 ## Installation
 
