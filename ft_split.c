@@ -6,13 +6,13 @@
 /*   By: thilefeb <thilefeb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:31:38 by thilefeb          #+#    #+#             */
-/*   Updated: 2023/10/30 12:01:40 by thilefeb         ###   ########.fr       */
+/*   Updated: 2024/04/09 23:50:46 by thilefeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	*ft_freetab(char **tabstr)
+void	*ft_freetab(char **tabstr)
 {
 	int	i;
 
